@@ -12,6 +12,7 @@ import FeaturedCollection from "./landingPages/FeaturedCollection";
 import HappyCustomers from "./landingPages/HappyCustomers";
 import BottomHeroBanner from "./landingPages/BottomHeroBanner";
 import BottomFeatureBar from "./landingPages/BottomFeatureBar";
+import MainProductsDetailPage from "./MainProductDetailPages/MainProductsPage";
 
 export default function Home() {
   return (
@@ -29,6 +30,7 @@ export default function Home() {
     <HappyCustomers />
     <BottomHeroBanner />
     <BottomFeatureBar />
+    <MainProductsDetailPage category="Designer Suits" />
     <Footer />
    </>
   );
