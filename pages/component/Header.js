@@ -21,7 +21,7 @@ export default function Navbar() {
 
         {/* Logo */}
         <div className="text-3xl font-bold tracking-wide lowercase">
-          milano
+        <img src="/assets/Logo2.png" alt="Logo" className=" h-15"/>
         </div>
 
         {/* Desktop Menu */}
