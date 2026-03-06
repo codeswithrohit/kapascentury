@@ -23,7 +23,7 @@ export default function Footer() {
 
           {/* Column 1 */}
           <div>
-            <h2 className="text-3xl font-bold mb-6">milano</h2>
+            <div className="text-2xl font-bold mb-5">कapas Century</div>
             <p className="text-sm leading-7 opacity-90 mb-6">
               We only carry designs we believe in ethically and aesthetically – 
               original, authentic pieces that are made to last. 
@@ -127,11 +127,11 @@ export default function Footer() {
         <div className="border-t border-white/20 mt-16 pt-6 flex flex-col md:flex-row justify-between items-center text-sm opacity-90 gap-4">
 
           <div>
-            🇺🇸 United States (USD $)
+           india (INR ₹)
           </div>
 
           <div>
-            © 2025 Milano store. All rights reserved.
+            © 2025 Kapas Century. All rights reserved.
           </div>
 
           <div className="flex gap-3">
