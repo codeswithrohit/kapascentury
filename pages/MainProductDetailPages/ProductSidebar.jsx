@@ -6,6 +6,8 @@ import FeaturedProduct from "./FeaturedProduct";
 
 export default function ProductSidebar() {
 
+  const [price, setPrice] = useState(0);
+
   const [openSections, setOpenSections] = useState({
     category: true,
     availability: true,
@@ -20,9 +22,13 @@ export default function ProductSidebar() {
     }));
   };
 
+  const handlePriceChange = (e) => {
+    setPrice(Number(e.target.value));
+  };
+
   return (
     <div className="space-y-6 w-full max-w-[260px]">
-      
+
       {/* Category */}
       <div className="border-b pb-4">
         <button
@@ -75,8 +81,21 @@ export default function ProductSidebar() {
 
         {openSections.price && (
           <div className="mt-4">
-            <input type="range" className="w-full" />
-            <p className="text-sm mt-2">₹0 - ₹350</p>
+
+            <input
+              type="range"
+              min="0"
+              max="3500"
+              step="100"
+              value={price}
+              onChange={handlePriceChange}
+              className="w-full"
+            />
+
+            <p className="text-sm mt-2">
+              ₹0 - ₹{price}
+            </p>
+
           </div>
         )}
       </div>
