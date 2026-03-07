@@ -3,6 +3,7 @@
 import useEmblaCarousel from "embla-carousel-react"
 import { FaHeart, FaEye } from "react-icons/fa"
 import { HiOutlineSquares2X2 } from "react-icons/hi2"
+import { useCart } from "../component/CartContext"
 
 const products = [
   {
@@ -52,6 +53,7 @@ export default function ProductCarousel() {
     align: "start",
     loop: true,
   })
+  const { addToCart } = useCart();
 
   return (
     <section className="py-8">
@@ -102,7 +104,10 @@ export default function ProductCarousel() {
 
                 {/* Add To Cart Button */}
                 <div className="px-4 absolute bottom-4 left-0 w-full opacity-0 translate-y-10 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500">
-                  <button className="w-full rounded-full bg-white text-black py-3 font-medium hover:bg-black hover:text-white transition">
+                  <button
+                    onClick={() => addToCart(product, 1)}
+                    className="w-full rounded-full bg-white text-black py-3 font-medium hover:bg-black hover:text-white transition"
+                  >
                     Add To Cart
                   </button>
                 </div>

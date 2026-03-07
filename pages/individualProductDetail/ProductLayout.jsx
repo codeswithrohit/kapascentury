@@ -11,6 +11,13 @@ export default function ProductLayout( { Detail }) {
 
     const title = Detail || "Default Product";
 
+    const product = {
+      id: title.replace(/\s+/g, '-').toLowerCase(),
+      title: title,
+      price: 190, // You can make this dynamic
+      image: "https://images.unsplash.com/photo-1610030469983-98e550d6193c", // Sample image
+    };
+
   return (
     <div>
         <Header />
@@ -24,7 +31,7 @@ export default function ProductLayout( { Detail }) {
       {/* Right Side */}
       <div className="flex-1">
         <ProductInfo title={title}/>
-        <ProductRightSidebar  />
+        <ProductRightSidebar product={product} />
       </div>
 
     </div>

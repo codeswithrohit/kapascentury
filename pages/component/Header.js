@@ -11,9 +11,12 @@ import {
   FiX,
 } from "react-icons/fi";
 import { MdKeyboardArrowDown } from "react-icons/md";
+import { useCart } from "./CartContext";
+import Cart from "./Cart";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const { getTotalItems, setIsCartOpen } = useCart();
 
   return (
     <header className="w-full bg-[#F2E4D8] border-b border-gray-200">
@@ -64,10 +67,10 @@ export default function Navbar() {
             </span>
           </div>
 
-          <div className="relative cursor-pointer">
+          <div className="relative cursor-pointer" onClick={() => setIsCartOpen(true)}>
             <FiShoppingCart />
             <span className="absolute -top-2 -right-3 bg-red-700 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">
-              0
+              {getTotalItems()}
             </span>
           </div>
 
@@ -113,6 +116,9 @@ export default function Navbar() {
           </nav>
         </div>
       )}
+
+      {/* Cart Component */}
+      <Cart />
     </header>
   );
 }
