@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { FiHeart, FiMinus, FiPlus } from "react-icons/fi";
 import { RiStackFill } from "react-icons/ri";
-import { useCart } from "../component/CartContext";
+import { useCart } from "../../context/CartContext";
 
 export default function ProductRightSidebar({ product }) {
    

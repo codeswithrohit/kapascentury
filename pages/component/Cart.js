@@ -1,6 +1,6 @@
 "use client";
 
-import { useCart } from "./CartContext";
+import { useCart } from "../../context/CartContext";
 import { FiX, FiMinus, FiPlus } from "react-icons/fi";
 
 export default function Cart() {

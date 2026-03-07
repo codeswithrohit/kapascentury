@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { FiHeart, FiEye, FiLayers } from "react-icons/fi";
 import { FaStar } from "react-icons/fa";
-import { useCart } from "../component/CartContext";
+import { useCart } from "../../context/CartContext";
 
 export default function ProductCard({ id, image, title, price }) {
   const { addToCart } = useCart();
