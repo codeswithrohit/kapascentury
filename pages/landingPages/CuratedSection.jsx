@@ -16,7 +16,6 @@ export default function CuratedSection() {
   const [emblaRef, emblaApi] = useEmblaCarousel({
     align: "start",
     containScroll: "trimSnaps",
-    dragFree: false,
   });
 
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -32,27 +31,34 @@ export default function CuratedSection() {
     emblaApi.on("select", onSelect);
   }, [emblaApi, onSelect]);
 
-  const scrollTo = (index) => {
-    if (emblaApi) emblaApi.scrollTo(index);
-  };
-
   return (
-    <section className=" py-16">
-      <h2 className="text-center text-4xl font-serif">
+    <section className="py-12 lg:py-16">
+
+      {/* TITLE */}
+      <h2 className="text-center text-2xl sm:text-3xl lg:text-4xl font-serif">
         Curated for You!
       </h2>
 
-      <div className="max-w-[1400px] mx-auto  flex flex-col items-center  pt-10">
+      <div className="max-w-[1400px] mx-auto px-4 pt-8 lg:pt-10">
 
-        {/* Carousel */}
-        <div className="overflow-hidden  flex items-center" ref={emblaRef}>
-          <div className="flex gap-4  items-center justify-center">
+        {/* CAROUSEL */}
+        <div className="overflow-hidden" ref={emblaRef}>
+          <div className="flex gap-4 lg:gap-6">
+
             {products.map((item) => (
               <div
                 key={item.id}
-                className="flex-[0_0_85%] sm:flex-[0_0_45%] md:flex-[0_0_15%]"
+                className="
+                flex-[0_0_80%]
+                sm:flex-[0_0_45%]
+                md:flex-[0_0_30%]
+                lg:flex-[0_0_18%]
+                "
               >
-                <div className="relative h-[420px] rounded-3xl overflow-hidden group">
+
+                <div className="relative h-[320px] sm:h-[360px] lg:h-[420px] rounded-3xl overflow-hidden group">
+
+                  {/* VIDEO */}
                   <video
                     src={item.video}
                     autoPlay
@@ -62,28 +68,36 @@ export default function CuratedSection() {
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
 
+                  {/* OVERLAY */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
 
-                  <div className="absolute bottom-5 left-5 right-5 backdrop-blur-md bg-white/20 rounded-xl p-4">
-                    <h3 className="text-white text-base font-medium">
+                  {/* PRODUCT INFO */}
+                  <div className="absolute bottom-4 left-4 right-4 backdrop-blur-md bg-white/20 rounded-xl p-3 sm:p-4">
+
+                    <h3 className="text-white text-sm sm:text-base font-medium">
                       {item.title}
                     </h3>
-                    <p className="text-white/90 text-sm">
+
+                    <p className="text-white/90 text-xs sm:text-sm">
                       {item.price}
                     </p>
+
                   </div>
+
                 </div>
+
               </div>
             ))}
+
           </div>
         </div>
 
-        {/* Dots */}
-        {/* <div className="flex justify-center mt-8 gap-3">
+        {/* DOTS */}
+        <div className="flex justify-center mt-6 lg:mt-8 gap-3">
           {products.map((_, index) => (
             <button
               key={index}
-              onClick={() => scrollTo(index)}
+              onClick={() => emblaApi && emblaApi.scrollTo(index)}
               className={`h-2 rounded-full transition-all duration-300 ${
                 selectedIndex === index
                   ? "w-6 bg-black"
@@ -91,7 +105,7 @@ export default function CuratedSection() {
               }`}
             />
           ))}
-        </div> */}
+        </div>
 
       </div>
     </section>

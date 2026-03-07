@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useCallback, useEffect, useState } from "react";
+import React from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import Link from "next/link";
 
@@ -54,38 +54,69 @@ export default function CategoryCircleSection() {
   });
 
   return (
-    <section className="py-6 pt-6">
-      <div className="max-w-7xl mx-auto px-6">
+    <section className="py-8 lg:py-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+
         <div className="overflow-hidden" ref={emblaRef}>
-          <div className="flex">
+          <div className="flex gap-4 sm:gap-6">
+
             {categories.map((cat, index) => (
               <div
                 key={index}
-                className="flex-[0_0_56%] sm:flex-[0_0_26%] md:flex-[0_0_14%] text-center px-1"
+                className="
+                flex-[0_0_40%]
+                sm:flex-[0_0_22%]
+                md:flex-[0_0_14%]
+                lg:flex-[0_0_12%]
+                text-center
+                "
               >
                 <Link
-                  href={`/category/${encodeURIComponent(
-                    cat.name,
-                  )}`}
+                  href={`/category/${encodeURIComponent(cat.name)}`}
+                  className="flex flex-col items-center group"
                 >
-                  <div className="flex flex-col items-center cursor-pointer">
-                    <div className="w-20 h-20 md:w-28 md:h-28 rounded-full overflow-hidden shadow-md transition duration-300 hover:scale-105">
-                      <img
-                        src={cat.image}
-                        alt={cat.name}
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-
-                    <p className="mt-4 font-bold text-sm md:text-base text-gray-800">
-                      {cat.name}
-                    </p>
+                  {/* IMAGE */}
+                  <div
+                    className="
+                    w-20 h-20
+                    sm:w-24 sm:h-24
+                    md:w-28 md:h-28
+                    rounded-full
+                    overflow-hidden
+                    shadow-md
+                    transition
+                    duration-300
+                    group-hover:scale-110
+                    group-hover:shadow-lg
+                    "
+                  >
+                    <img
+                      src={cat.image}
+                      alt={cat.name}
+                      className="w-full h-full object-cover"
+                    />
                   </div>
+
+                  {/* TEXT */}
+                  <p
+                    className="
+                    mt-3
+                    text-xs sm:text-sm md:text-base
+                    font-semibold
+                    text-gray-800
+                    group-hover:text-black
+                    truncate
+                    "
+                  >
+                    {cat.name}
+                  </p>
                 </Link>
               </div>
             ))}
+
           </div>
         </div>
+
       </div>
     </section>
   );

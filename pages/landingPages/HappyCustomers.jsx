@@ -53,79 +53,88 @@ const reviews = [
 
 export default function HappyCustomers() {
   return (
-    <section className="bg-[#F7F2EC] py-14">
-      <div className="max-w-[1400px] mx-auto px-6">
+    <section className="bg-[#F7F2EC] py-12 sm:py-14 lg:py-16">
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6">
 
         {/* TITLE */}
-        <h2 className="text-center text-4xl font-serif mb-6">
+        <h2 className="text-center text-2xl sm:text-3xl lg:text-4xl font-serif mb-8 lg:mb-12">
           Happy Customers
         </h2>
 
         {/* GRID */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-7">
 
           {reviews.map((review) => (
             <div
               key={review.id}
-              className="bg-white rounded-2xl overflow-hidden shadow-sm"
+              className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition"
             >
 
-              {/* TOP IMAGE */}
+              {/* IMAGE */}
               <img
                 src={review.image}
-                className="h-[260px] w-full object-cover"
+                alt={review.name}
+                className="w-full h-[180px] sm:h-[200px] md:h-[220px] lg:h-[240px] object-cover"
               />
 
               {/* CONTENT */}
-              <div className="p-6">
+              <div className="p-4 sm:p-5 lg:p-6">
 
                 {/* STARS */}
-                <div className="flex text-orange-400 mb-3">
+                <div className="flex text-orange-400 text-sm mb-2">
                   {[...Array(5)].map((_, i) => (
                     <FaStar key={i} />
                   ))}
                 </div>
 
                 {/* NAME */}
-                <div className="flex items-center gap-2 mb-3">
-                  <h4 className="font-semibold">{review.name}</h4>
-                  <span className="flex items-center text-gray-500 text-sm gap-1">
+                <div className="flex items-center flex-wrap gap-2 mb-2">
+
+                  <h4 className="font-semibold text-sm sm:text-base">
+                    {review.name}
+                  </h4>
+
+                  <span className="flex items-center text-gray-500 text-xs gap-1">
                     <MdVerified className="text-green-500" />
                     Verified Buyer
                   </span>
+
                 </div>
 
                 {/* TEXT */}
-                <p className="text-gray-600 text-sm leading-relaxed">
+                <p className="text-gray-600 text-xs sm:text-sm leading-relaxed line-clamp-4">
                   {review.text}
                 </p>
 
-                <div className="border-t my-6"></div>
+                <div className="border-t my-4 sm:my-5"></div>
 
                 {/* PRODUCT */}
-                <div className="flex items-center gap-4">
+                <div className="flex items-center gap-3">
 
                   <img
                     src={review.productImage}
-                    className="w-14 h-14 rounded-lg object-cover"
+                    alt={review.product}
+                    className="w-10 h-10 sm:w-12 sm:h-12 rounded-md object-cover"
                   />
 
                   <div>
-                    <p className="text-sm font-medium">
+
+                    <p className="text-xs sm:text-sm font-medium truncate max-w-[140px]">
                       {review.product}
                     </p>
 
-                    <div className="text-sm font-semibold">
+                    <div className="text-xs sm:text-sm font-semibold">
 
                       {review.price}
 
                       {review.oldPrice && (
-                        <span className="text-gray-400 line-through ml-2">
+                        <span className="text-gray-400 line-through ml-2 text-xs">
                           {review.oldPrice}
                         </span>
                       )}
 
                     </div>
+
                   </div>
 
                 </div>

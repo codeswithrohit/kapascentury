@@ -42,6 +42,7 @@ export default function TrendingCollectionSection() {
   const [emblaRef] = useEmblaCarousel({
     align: "start",
     loop: true,
+    dragFree: true,
   });
 
   const { addToCart } = useCart();
@@ -50,14 +51,14 @@ export default function TrendingCollectionSection() {
     <section className="py-12 lg:py-16 px-4">
       <div className="max-w-[1400px] mx-auto">
 
-        <div className="flex flex-col lg:flex-row gap-6">
+        <div className="flex flex-col lg:flex-row gap-8">
 
           {/* LEFT BANNER */}
           <div className="hidden lg:block lg:w-[30%]">
             <img
               src="https://demo2-milano.myshopify.com/cdn/shop/files/fs8_12.webp?v=1758101571&width=660"
               alt="Trending Collection"
-              className="rounded-3xl w-full h-[400px] xl:h-[440px] object-cover"
+              className="rounded-3xl w-full h-[420px] xl:h-[460px] object-cover"
             />
           </div>
 
@@ -65,95 +66,112 @@ export default function TrendingCollectionSection() {
           <div className="lg:w-[70%] w-full">
 
             {/* HEADER */}
-            <div className="flex  sm:items-center justify-between mb-6 gap-3">
+            <div className="flex items-center justify-between mb-6">
 
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-serif">
                 Trending Collection
               </h2>
 
-              <button className="underline text-sm hover:text-gray-500">
+              <button className="text-sm underline hover:text-gray-500">
                 View All
               </button>
 
             </div>
 
-            {/* CAROUSEL */}
+            {/* EMBLA SLIDER */}
             <div className="overflow-hidden" ref={emblaRef}>
-              <div className="flex gap-4">
+              <div className="flex">
 
                 {products.map((product) => (
                   <div
                     key={product.id}
-                    className="min-w-[65%] sm:min-w-[45%] md:min-w-[30%] lg:min-w-[23%] group"
+                    className="
+                    flex-[0_0_50%]
+                    sm:flex-[0_0_33%]
+                    lg:flex-[0_0_25%]
+                    px-2
+                    "
                   >
 
-                    {/* IMAGE */}
-                    <div className="relative overflow-hidden rounded-2xl">
+                    <div className="group">
 
-                      <img
-                        src={product.image}
-                        alt={product.name}
-                        className="w-full h-[260px] sm:h-[280px] lg:h-[300px] object-cover transition duration-500 group-hover:scale-105"
-                      />
+                      {/* IMAGE CARD */}
+                      <div className="relative overflow-hidden rounded-2xl">
 
-                      {/* DISCOUNT */}
-                      {product.discount && (
-                        <span className="absolute top-3 left-3 bg-red-500 text-white text-xs px-3 py-1 rounded-full">
-                          {product.discount}
-                        </span>
-                      )}
+                        <img
+                          src={product.image}
+                          alt={product.name}
+                          className="
+                          w-full
+                          h-[220px]
+                          sm:h-[260px]
+                          lg:h-[300px]
+                          object-cover
+                          transition duration-500
+                          group-hover:scale-105
+                          "
+                        />
 
-                      {/* HOVER ICONS */}
-                      <div className="absolute right-3 top-3 flex flex-col gap-2 opacity-0 translate-x-5 group-hover:opacity-100 group-hover:translate-x-0 transition duration-300">
-
-                        <button className="bg-white p-2 rounded-full shadow">
-                          <FaHeart size={14} />
-                        </button>
-
-                        <button className="bg-white p-2 rounded-full shadow">
-                          <HiOutlineSquares2X2 size={16} />
-                        </button>
-
-                        <button className="bg-white p-2 rounded-full shadow">
-                          <FaEye size={14} />
-                        </button>
-
-                      </div>
-
-                      {/* ADD TO CART */}
-                      <div className="absolute bottom-4 left-0 w-full px-3 opacity-0 translate-y-6 group-hover:opacity-100 group-hover:translate-y-0 transition duration-300">
-
-                        <button
-                          onClick={() => addToCart(product, 1)}
-                          className="w-full bg-white py-2 rounded-full font-medium hover:bg-black hover:text-white"
-                        >
-                          Add To Cart
-                        </button>
-
-                      </div>
-
-                    </div>
-
-                    {/* PRODUCT INFO */}
-                    <div className="mt-3 text-center">
-
-                      <h3 className="text-sm font-medium truncate">
-                        {product.name}
-                      </h3>
-
-                      <div className="text-orange-400 text-sm mt-1">
-                        ★★★★★
-                      </div>
-
-                      <div className="mt-1 font-semibold">
-
-                        ₹{product.price}.00
-
-                        {product.oldPrice && (
-                          <span className="ml-2 text-gray-400 line-through text-sm">
-                            ₹{product.oldPrice}.00
+                        {/* DISCOUNT */}
+                        {product.discount && (
+                          <span className="absolute top-3 left-3 bg-red-500 text-white text-xs px-3 py-1 rounded-full">
+                            {product.discount}
                           </span>
                         )}
+
+                        {/* HOVER ICONS */}
+                        <div className="absolute right-3 top-3 flex flex-col gap-2 opacity-0 translate-x-5 group-hover:opacity-100 group-hover:translate-x-0 transition duration-300">
+
+                          <button className="bg-white p-2 rounded-full shadow hover:bg-black hover:text-white">
+                            <FaHeart size={14} />
+                          </button>
+
+                          <button className="bg-white p-2 rounded-full shadow hover:bg-black hover:text-white">
+                            <HiOutlineSquares2X2 size={16} />
+                          </button>
+
+                          <button className="bg-white p-2 rounded-full shadow hover:bg-black hover:text-white">
+                            <FaEye size={14} />
+                          </button>
+
+                        </div>
+
+                        {/* ADD TO CART */}
+                        <div className="absolute bottom-4 left-0 w-full px-3 opacity-0 translate-y-6 group-hover:opacity-100 group-hover:translate-y-0 transition duration-300">
+
+                          <button
+                            onClick={() => addToCart(product, 1)}
+                            className="w-full bg-white py-2 rounded-full text-sm font-medium hover:bg-black hover:text-white transition"
+                          >
+                            Add To Cart
+                          </button>
+
+                        </div>
+
+                      </div>
+
+                      {/* PRODUCT INFO */}
+                      <div className="mt-3 text-center">
+
+                        <h3 className="text-xs sm:text-sm font-medium truncate">
+                          {product.name}
+                        </h3>
+
+                        <div className="text-orange-400 text-xs sm:text-sm mt-1">
+                          ★★★★★
+                        </div>
+
+                        <div className="mt-1 font-semibold text-sm">
+
+                          ₹{product.price}.00
+
+                          {product.oldPrice && (
+                            <span className="ml-2 text-gray-400 line-through text-xs">
+                              ₹{product.oldPrice}.00
+                            </span>
+                          )}
+
+                        </div>
 
                       </div>
 
@@ -166,7 +184,9 @@ export default function TrendingCollectionSection() {
             </div>
 
           </div>
+
         </div>
+
       </div>
     </section>
   );

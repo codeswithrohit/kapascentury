@@ -30,7 +30,7 @@ export default function MainProductsPage({ category }) {
         <div className="absolute inset-0 bg-black/20"></div>
 
         {/* Center Text */}
-        <h2 className="relative text-white text-5xl font-serif font-semibold">
+        <h2 className="relative text-white text-xl sm:text-2xl md:text-4xl font-serif font-semibold">
           {category ? `${category} Collection` : "Products"}
         </h2>
       </div>

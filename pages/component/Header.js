@@ -24,7 +24,7 @@ export default function Navbar() {
 
         {/* Logo */}
         <div className="text-3xl font-bold tracking-wide lowercase">
-        <img src="/assets/Logo2.png" alt="Logo" className=" h-15"/>
+        <img src="/assets/Logo2.png" alt="Logo" className="h-12"/>
         </div>
 
         {/* Desktop Menu */}
@@ -55,7 +55,7 @@ export default function Navbar() {
         </nav>
 
         {/* Right Icons */}
-        <div className="flex items-center gap-5 text-xl">
+        <div className="flex items-center gap-4 sm:gap-5 text-xl">
 
           <FiSearch className="cursor-pointer hover:scale-110 transition" />
           <FiUser className="cursor-pointer hover:scale-110 transition" />
