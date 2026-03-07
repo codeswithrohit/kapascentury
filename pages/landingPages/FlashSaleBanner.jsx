@@ -29,9 +29,15 @@ export default function FlashSaleBanner() {
   }, []);
 
   return (
-    <section className="px-6 py-10">
+    <section className="px-4 sm:px-6 py-8 sm:py-10">
       <div
-        className="relative rounded-3xl overflow-hidden h-[180px] flex items-center justify-between px-10"
+        className="relative rounded-3xl overflow-hidden 
+        flex flex-col lg:flex-row 
+        items-center justify-between 
+        gap-6 lg:gap-0 
+        px-6 sm:px-8 lg:px-10 
+        py-8 lg:py-0 
+        min-h-[220px] lg:h-[180px]"
         style={{
           backgroundImage:
             "url(https://demo2-milano.myshopify.com/cdn/shop/files/fs8_sale.jpg?v=1758101571&width=1920)",
@@ -39,32 +45,35 @@ export default function FlashSaleBanner() {
           backgroundPosition: "center",
         }}
       >
-        {/* Dark Overlay */}
-        <div className="absolute inset-0 "></div>
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-black/30"></div>
 
-        {/* Left Content */}
-        <div className="relative text-white max-w-md">
-          <h2 className="text-4xl font-serif font-semibold">
+        {/* LEFT TEXT */}
+        <div className="relative text-white text-center lg:text-left max-w-md">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-serif font-semibold">
             Flash Sale now on!
           </h2>
+
           <p className="text-sm mt-2">
             Score Big Savings on All Your Favorites
           </p>
         </div>
 
-        {/* Timer */}
-        <div className="relative flex gap-4 text-center">
+        {/* TIMER */}
+        <div className="relative flex gap-3 sm:gap-4 text-center">
           <TimerBox value={time.days} label="DAYS" />
           <TimerBox value={time.hours} label="HOUR" />
           <TimerBox value={time.mins} label="MINS" />
           <TimerBox value={time.secs} label="SECS" />
         </div>
 
-        {/* Right Button */}
-        <div className="relative flex items-center gap-6">
-          <span className="text-white text-lg">Topsale10STBL</span>
+        {/* RIGHT BUTTON */}
+        <div className="relative flex flex-col sm:flex-row items-center gap-4 sm:gap-6 text-center">
+          <span className="text-white text-sm sm:text-lg font-medium">
+            Topsale10STBL
+          </span>
 
-          <button className="border border-white text-white px-8 py-3 rounded-full hover:bg-white hover:text-black transition">
+          <button className="border border-white text-white px-6 sm:px-8 py-2 sm:py-3 rounded-full hover:bg-white hover:text-black transition text-sm sm:text-base">
             Shop Sale
           </button>
         </div>
@@ -76,10 +85,12 @@ export default function FlashSaleBanner() {
 function TimerBox({ value, label }) {
   return (
     <div>
-      <div className="bg-white text-black px-4 py-2 rounded-md text-xl font-semibold">
+      <div className="bg-white text-black px-3 sm:px-4 py-1 sm:py-2 rounded-md text-lg sm:text-xl font-semibold">
         {value}
       </div>
-      <div className="text-white text-xs mt-1">{label}</div>
+      <div className="text-white text-[10px] sm:text-xs mt-1">
+        {label}
+      </div>
     </div>
   );
 }

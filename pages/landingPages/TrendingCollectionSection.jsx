@@ -36,13 +36,6 @@ const products = [
     image:
       "https://demo2-milano.myshopify.com/cdn/shop/files/fs4_7_2.webp?v=1758097443&width=660",
   },
-  // {
-  //   id: 5,
-  //   name: "Green Embroidered Lehenga",
-  //   price: 190,
-  //   image:
-  //     "https://demo2-milano.myshopify.com/cdn/shop/files/fs4_5_2.jpg?v=1757990552&width=720",
-  // },
 ];
 
 export default function TrendingCollectionSection() {
@@ -50,35 +43,38 @@ export default function TrendingCollectionSection() {
     align: "start",
     loop: true,
   });
+
   const { addToCart } = useCart();
 
   return (
-    <section className="py-16">
+    <section className="py-12 lg:py-16 px-4">
       <div className="max-w-[1400px] mx-auto">
 
-        <div className="flex flex-row justify-center gap-4 items-start">
+        <div className="flex flex-col lg:flex-row gap-6">
 
           {/* LEFT BANNER */}
-          <div className="hidden lg:block">
+          <div className="hidden lg:block lg:w-[30%]">
             <img
               src="https://demo2-milano.myshopify.com/cdn/shop/files/fs8_12.webp?v=1758101571&width=660"
               alt="Trending Collection"
-              className="rounded-3xl w-full h-[440px] object-cover"
+              className="rounded-3xl w-full h-[400px] xl:h-[440px] object-cover"
             />
           </div>
 
-          {/* RIGHT SIDE PRODUCTS */}
-          <div>
+          {/* RIGHT SIDE */}
+          <div className="lg:w-[70%] w-full">
 
             {/* HEADER */}
-            <div className="flex items-center justify-between mb-8 pr-4">
-              <h2 className="text-4xl font-serif">
-                Top Trending Collection
+            <div className="flex  sm:items-center justify-between mb-6 gap-3">
+
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-serif">
+                Trending Collection
               </h2>
 
               <button className="underline text-sm hover:text-gray-500">
                 View All
               </button>
+
             </div>
 
             {/* CAROUSEL */}
@@ -88,7 +84,7 @@ export default function TrendingCollectionSection() {
                 {products.map((product) => (
                   <div
                     key={product.id}
-                    className="min-w-[180px] lg:min-w-[190px] group"
+                    className="min-w-[65%] sm:min-w-[45%] md:min-w-[30%] lg:min-w-[23%] group"
                   >
 
                     {/* IMAGE */}
@@ -97,7 +93,7 @@ export default function TrendingCollectionSection() {
                       <img
                         src={product.image}
                         alt={product.name}
-                        className="w-full h-[300px] object-cover transition duration-500 group-hover:scale-105"
+                        className="w-full h-[260px] sm:h-[280px] lg:h-[300px] object-cover transition duration-500 group-hover:scale-105"
                       />
 
                       {/* DISCOUNT */}
@@ -145,12 +141,10 @@ export default function TrendingCollectionSection() {
                         {product.name}
                       </h3>
 
-                      {/* RATING */}
                       <div className="text-orange-400 text-sm mt-1">
                         ★★★★★
                       </div>
 
-                      {/* PRICE */}
                       <div className="mt-1 font-semibold">
 
                         ₹{product.price}.00
