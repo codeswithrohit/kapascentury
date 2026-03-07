@@ -11,7 +11,7 @@ import {
   FiX,
 } from "react-icons/fi";
 import { MdKeyboardArrowDown } from "react-icons/md";
-import { useCart } from "./CartContext";
+import { useCart } from "../../context/CartContext";
 import Cart from "./Cart";
 
 export default function Navbar() {
