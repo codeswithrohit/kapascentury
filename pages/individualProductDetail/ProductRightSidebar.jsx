@@ -38,7 +38,7 @@ export default function ProductRightSidebar({ product }) {
   return (
     <div className="mt-8 space-y-6">
       {/* Quantity + Add to cart */}
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-4 sm:flex-row flex-col">
         <div className="flex items-center border cursor-pointer rounded-full overflow-hidden text-sm">
           <button
             onClick={() => setQty(qty > 1 ? qty - 1 : 1)}
@@ -56,17 +56,19 @@ export default function ProductRightSidebar({ product }) {
 
         <button
           onClick={() => addToCart({ ...product, id: product.id || product.title }, qty)}
-          className="flex-1 bg-black text-white py-2 rounded-full text-sm cursor-pointer hover:bg-gray-800 transition"
+          className="flex-1 bg-black text-white py-2 rounded-full w-full text-sm cursor-pointer hover:bg-gray-800 transition"
         >
           Add To Cart
         </button>
-
-        <button className="border cursor-pointer p-2 text-sm rounded-full hover:bg-black hover:text-white transition">
+        <div className="flex-row  flex gap-4 ">
+        <button className="border cursor-pointer p-2 flex-1 text-sm rounded-full hover:bg-black hover:text-white transition">
           <FiHeart />
         </button>
-        <button className="border cursor-pointer p-2 text-sm rounded-full hover:bg-black hover:text-white transition">
+        <button className="border cursor-pointer p-2 flex-1 text-sm rounded-full hover:bg-black hover:text-white transition">
           <RiStackFill />   
         </button>
+
+        </div>
        
       </div>
 
