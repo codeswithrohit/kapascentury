@@ -1,9 +1,9 @@
-"use client"
+"use client";
 
 export default function BottomHeroBanner() {
   return (
-    <section className="relative w-full h-[75vh] overflow-hidden">
-      
+    <section className="relative w-full min-h-[60vh] sm:min-h-[70vh] lg:min-h-[75vh] overflow-hidden">
+
       {/* Background Image */}
       <img
         src="https://demo2-milano.myshopify.com/cdn/shop/files/fs8_hero.webp?v=1758101571&width=1920"
@@ -11,32 +11,38 @@ export default function BottomHeroBanner() {
         className="absolute inset-0 w-full h-full object-cover"
       />
 
-      {/* Dark Red Overlay */}
-      <div className="absolute inset-0" />
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-[#6e0d1f]/40"></div>
 
       {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto h-full flex items-center px-6">
-        <div className="max-w-xl text-white">
-          
-          {/* Small Label */}
-          <p className="uppercase tracking-widest text-sm mb-6 opacity-90">
+      <div className="relative z-10 max-w-7xl mx-auto h-full flex items-center px-4 sm:px-6 lg:px-10 py-16">
+        
+        <div className="max-w-lg text-white text-center sm:text-left">
+
+          {/* Label */}
+          <p className="uppercase tracking-widest text-xs sm:text-sm mb-4 sm:mb-6 opacity-90">
             Exclusive Deals
           </p>
 
           {/* Heading */}
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-serif leading-tight mb-8">
+          <h1 className="font-serif leading-tight mb-6 sm:mb-8
+            text-2xl 
+            sm:text-3xl 
+            md:text-4xl 
+            lg:text-5xl">
             Discover Festive
-            <br />
+            <br className="hidden sm:block" />
             Wardrobe Now on Sale
           </h1>
 
           {/* Button */}
-          <button className="px-12 py-3 border border-white rounded-full text-md transition-all duration-300 hover:bg-white hover:text-[#6e0d1f]">
+          <button className="px-8 sm:px-10 lg:px-12 py-2.5 sm:py-3 border border-white rounded-full text-sm sm:text-md transition-all duration-300 hover:bg-white hover:text-[#6e0d1f]">
             Don't Miss Out
           </button>
 
         </div>
+
       </div>
     </section>
-  )
+  );
 }

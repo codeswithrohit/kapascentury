@@ -1,3 +1,5 @@
+"use client";
+
 import useEmblaCarousel from "embla-carousel-react";
 import { FaHeart, FaEye } from "react-icons/fa";
 import { HiOutlineSquares2X2 } from "react-icons/hi2";
@@ -37,7 +39,11 @@ const products = [
 ];
 
 export default function TrendingCollectionSection() {
-  const [emblaRef] = useEmblaCarousel({ loop: true, align: "start" });
+  const [emblaRef] = useEmblaCarousel({
+    align: "start",
+    loop: true,
+  });
+
   const { addToCart } = useCart();
 
   return (
@@ -46,20 +52,11 @@ export default function TrendingCollectionSection() {
 
         <div className="flex flex-col lg:flex-row gap-6 items-start">
 
-          {/* LEFT BANNER */}
-          <div className="w-full lg:w-[420px]">
-            <img
-              src="https://demo2-milano.myshopify.com/cdn/shop/files/fs8_2.webp?v=1758101571&width=660"
-              alt="Trending Collection"
-              className="rounded-3xl w-full h-[260px] sm:h-[320px] lg:h-[440px] object-cover"
-            />
-          </div>
-
-          {/* RIGHT PRODUCTS */}
-          <div className="flex-1 w-full">
+          {/* PRODUCTS LEFT SIDE */}
+          <div className="flex-1 w-full order-2 lg:order-1">
 
             {/* HEADER */}
-            <div className="flex items-center justify-between mb-5">
+            <div className="flex items-center justify-between mb-6">
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-serif">
                 Featured Collection
               </h2>
@@ -127,6 +124,7 @@ export default function TrendingCollectionSection() {
 
                     {/* PRODUCT INFO */}
                     <div className="mt-3 text-center">
+
                       <h3 className="text-xs sm:text-sm font-medium truncate">
                         {product.name}
                       </h3>
@@ -137,12 +135,14 @@ export default function TrendingCollectionSection() {
 
                       <div className="mt-1 font-semibold text-sm">
                         ₹{product.price}.00
+
                         {product.oldPrice && (
                           <span className="ml-2 text-gray-400 line-through text-xs">
                             ₹{product.oldPrice}.00
                           </span>
                         )}
                       </div>
+
                     </div>
 
                   </div>
@@ -152,6 +152,18 @@ export default function TrendingCollectionSection() {
             </div>
 
           </div>
+
+          {/* BANNER RIGHT SIDE */}
+          <div className="w-full lg:block hidden lg:w-[420px] order-1 lg:order-2">
+
+            <img
+              src="https://demo2-milano.myshopify.com/cdn/shop/files/fs8_2.webp?v=1758101571&width=660"
+              alt="Trending Collection"
+              className="rounded-3xl w-full h-[260px] sm:h-[320px] lg:h-[440px] object-cover"
+            />
+
+          </div>
+
         </div>
 
       </div>
