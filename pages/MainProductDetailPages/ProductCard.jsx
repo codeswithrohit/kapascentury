@@ -3,8 +3,10 @@
 import Link from "next/link";
 import { FiHeart, FiEye, FiLayers } from "react-icons/fi";
 import { FaStar } from "react-icons/fa";
+import { useCart } from "../component/CartContext";
 
 export default function ProductCard({ id, image, title, price }) {
+  const { addToCart } = useCart();
   return (
 
     <Link href={`/productDetail/${title}`}>
@@ -60,7 +62,7 @@ export default function ProductCard({ id, image, title, price }) {
             transition duration-300"
           >
             <button
-              onClick={(e)=>e.preventDefault()}
+              onClick={(e)=>{ e.preventDefault(); addToCart({ id, title, price, image }); }}
               className="w-full bg-white py-3 rounded-full shadow font-medium hover:bg-black hover:text-white"
             >
               Add To Cart

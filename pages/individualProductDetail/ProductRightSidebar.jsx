@@ -3,11 +3,14 @@
 import { useState } from "react";
 import { FiHeart, FiMinus, FiPlus } from "react-icons/fi";
 import { RiStackFill } from "react-icons/ri";
+import { useCart } from "../component/CartContext";
 
-export default function ProductRightSidebar() {
+export default function ProductRightSidebar({ product }) {
    
   const [qty, setQty] = useState(1);
   const [openSection, setOpenSection] = useState(null);
+  const { addToCart } = useCart();
+
 
   const toggleSection = (section) => {
     setOpenSection(openSection === section ? null : section);
@@ -51,7 +54,10 @@ export default function ProductRightSidebar() {
           </button>
         </div>
 
-        <button className="flex-1 bg-black text-white py-2 rounded-full text-sm cursor-pointer hover:bg-gray-800 transition">
+        <button
+          onClick={() => addToCart({ ...product, id: product.id || product.title }, qty)}
+          className="flex-1 bg-black text-white py-2 rounded-full text-sm cursor-pointer hover:bg-gray-800 transition"
+        >
           Add To Cart
         </button>
 

@@ -3,6 +3,7 @@
 import useEmblaCarousel from "embla-carousel-react";
 import { FaHeart, FaEye } from "react-icons/fa";
 import { HiOutlineSquares2X2 } from "react-icons/hi2";
+import { useCart } from "../component/CartContext";
 
 const products = [
   {
@@ -49,6 +50,7 @@ export default function TrendingCollectionSection() {
     align: "start",
     loop: true,
   });
+  const { addToCart } = useCart();
 
   return (
     <section className="py-16">
@@ -105,7 +107,10 @@ export default function TrendingCollectionSection() {
 
                       {/* ADD TO CART */}
                       <div className="absolute bottom-4 left-0 w-full px-3 opacity-0 translate-y-6 group-hover:opacity-100 group-hover:translate-y-0 transition duration-300">
-                        <button className="w-full bg-white py-2 rounded-full font-medium hover:bg-black hover:text-white">
+                        <button
+                          onClick={() => addToCart(product, 1)}
+                          className="w-full bg-white py-2 rounded-full font-medium hover:bg-black hover:text-white"
+                        >
                           Add To Cart
                         </button>
                       </div>
