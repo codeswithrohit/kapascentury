@@ -5,6 +5,7 @@ import { FiSearch } from "react-icons/fi";
 import { useCart } from "../../context/CartContext";
 
 export default function Checkout() {
+
   const { cartItems } = useCart();
 
   const subtotal = cartItems.reduce(
@@ -13,180 +14,200 @@ export default function Checkout() {
   );
 
   return (
-    <div className="bg-gray-100 min-h-screen py-10 px-4">
-      <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-10">
+
+    <div className="bg-[#F8EDEB] h-screen flex items-center justify-center p-4">
+
+      <div className="w-full max-w-7xl h-full grid lg:grid-cols-2 gap-4">
 
         {/* LEFT SIDE */}
-        <div className="bg-white p-8 rounded-lg shadow">
+        <div className="bg-[#FAE1DD] rounded-xl shadow p-5 flex flex-col justify-between text-sm">
 
-          {/* Contact */}
-          <div className="mb-8">
-            <h2 className="text-xl font-semibold mb-4">Contact</h2>
-            <input
-              type="text"
-              placeholder="Email or mobile phone number"
-              className="w-full border rounded-md p-3"
-            />
-          </div>
+          <div className="space-y-4">
 
-          {/* Delivery */}
-          <div className="mb-8">
-            <h2 className="text-xl font-semibold mb-4">Delivery</h2>
+            {/* Contact */}
+            <div>
+              <h2 className="font-semibold mb-1">Contact</h2>
 
-            <select className="w-full border p-3 rounded-md mb-3">
-              <option>India</option>
-            </select>
-
-            <div className="grid md:grid-cols-2 gap-3">
               <input
-                placeholder="First name"
-                className="border p-3 rounded-md"
-              />
-              <input
-                placeholder="Last name"
-                className="border p-3 rounded-md"
+                placeholder="Email or mobile phone number"
+                className="w-full border p-2 rounded-md text-sm"
               />
             </div>
 
-            <div className="relative mt-3">
-              <input
-                placeholder="Address"
-                className="border p-3 rounded-md w-full"
-              />
-              <FiSearch className="absolute right-3 top-4 text-gray-400" />
-            </div>
+            {/* Delivery */}
+            <div>
 
-            <input
-              placeholder="Apartment, suite, etc."
-              className="border p-3 rounded-md w-full mt-3"
-            />
+              <h2 className="font-semibold mb-1">Delivery</h2>
 
-            <div className="grid md:grid-cols-3 gap-3 mt-3">
-              <input placeholder="City" className="border p-3 rounded-md" />
-              <input placeholder="State" className="border p-3 rounded-md" />
-              <input placeholder="ZIP code" className="border p-3 rounded-md" />
-            </div>
+              <select className="w-full border p-2 rounded-md mb-2 text-sm">
+                <option>India</option>
+              </select>
 
-            <div className="flex items-center mt-3 gap-2">
-              <input type="checkbox" />
-              <p className="text-sm">Save this information for next time</p>
-            </div>
-          </div>
+              <div className="grid grid-cols-2 gap-2">
 
-          {/* Shipping */}
-          <div className="mb-8">
-            <h2 className="text-xl font-semibold mb-4">Shipping method</h2>
-            <div className="bg-gray-100 p-4 rounded-md text-gray-500 text-sm">
-              Enter your shipping address to view available shipping methods.
-            </div>
-          </div>
-
-          {/* Payment */}
-          <div>
-            <h2 className="text-xl font-semibold mb-4">Payment</h2>
-
-            <div className="border rounded-lg p-4">
-
-              <input
-                placeholder="Card number"
-                className="border p-3 rounded-md w-full mb-3"
-              />
-
-              <div className="grid md:grid-cols-2 gap-3">
                 <input
-                  placeholder="Expiration date (MM / YY)"
-                  className="border p-3 rounded-md"
+                  placeholder="First name"
+                  className="border p-2 rounded-md"
                 />
+
                 <input
-                  placeholder="Security code"
-                  className="border p-3 rounded-md"
+                  placeholder="Last name"
+                  className="border p-2 rounded-md"
                 />
+
+              </div>
+
+              <div className="relative mt-2">
+
+                <input
+                  placeholder="Address"
+                  className="border p-2 rounded-md w-full"
+                />
+
+                <FiSearch className="absolute right-2 top-3 text-gray-400 text-sm" />
+
               </div>
 
               <input
-                placeholder="Name on card"
-                className="border p-3 rounded-md w-full mt-3"
+                placeholder="Apartment, suite..."
+                className="border p-2 rounded-md w-full mt-2"
               />
 
-              <div className="flex items-center gap-2 mt-3">
-                <input type="checkbox" defaultChecked />
-                <p className="text-sm">
-                  Use shipping address as billing address
-                </p>
+              <div className="grid grid-cols-3 gap-2 mt-2">
+
+                <input placeholder="City" className="border p-2 rounded-md" />
+                <input placeholder="State" className="border p-2 rounded-md" />
+                <input placeholder="ZIP" className="border p-2 rounded-md" />
+
               </div>
+
+              <div className="flex items-center mt-2 gap-2 text-xs">
+                <input type="checkbox" />
+                <p>Save this information for next time</p>
+              </div>
+
             </div>
 
-            <button className="w-full bg-blue-600 hover:bg-blue-700 text-white py-4 rounded-lg mt-6 flex justify-center items-center gap-2">
-              <FaLock />
-              Pay now
-            </button>
+            {/* Shipping */}
+            <div>
+
+              <h2 className="font-semibold mb-1">Shipping method</h2>
+
+              <div className="bg-white p-2 rounded text-gray-500 text-xs">
+                Enter your shipping address to view shipping methods.
+              </div>
+
+            </div>
+
+            {/* Payment */}
+            <div>
+
+              <h2 className="font-semibold mb-1">Payment</h2>
+
+              <div className="border rounded-md p-3 bg-white space-y-2">
+
+                <input
+                  placeholder="Card number"
+                  className="border p-2 rounded-md w-full"
+                />
+
+                <div className="grid grid-cols-2 gap-2">
+
+                  <input
+                    placeholder="MM / YY"
+                    className="border p-2 rounded-md"
+                  />
+
+                  <input
+                    placeholder="CVC"
+                    className="border p-2 rounded-md"
+                  />
+
+                </div>
+
+                <input
+                  placeholder="Name on card"
+                  className="border p-2 rounded-md w-full"
+                />
+
+                <div className="flex items-center gap-2 text-xs">
+                  <input type="checkbox" defaultChecked />
+                  <p>Use shipping address as billing address</p>
+                </div>
+
+              </div>
+
+            </div>
+
           </div>
+
+          {/* PAY BUTTON */}
+          <button className="w-full bg-black hover:bg-gray-800 text-white py-3 rounded-lg flex justify-center items-center gap-2 mt-4">
+            <FaLock />
+            Pay now
+          </button>
+
         </div>
 
         {/* RIGHT SIDE */}
-        <div className="bg-gray-50 p-8 rounded-lg shadow h-fit">
+        <div className="bg-white rounded-xl shadow flex flex-col">
 
-          {/* PRODUCTS */}
-          <div className="space-y-5">
+          {/* ITEMS */}
+          <div className="flex-1 overflow-y-auto p-5 space-y-4">
 
             {cartItems.length === 0 ? (
-              <p className="text-gray-500">Your cart is empty</p>
+              <p className="text-gray-500 text-sm">Your cart is empty</p>
             ) : (
               cartItems.map((item, index) => (
+
                 <div key={index} className="flex justify-between items-center">
 
                   <div className="flex gap-3">
+
                     <div className="relative">
+
                       <img
                         src={item.image}
-                        className="w-16 h-20 object-cover rounded"
+                        className="w-14 h-16 object-cover rounded"
                       />
 
-                      <span className="absolute -top-2 -right-2 bg-black text-white text-xs px-2 py-1 rounded-full">
+                      <span className="absolute -top-2 -right-2 bg-black text-white text-xs px-1 rounded-full">
                         {item.quantity}
                       </span>
+
                     </div>
 
-                    <p className="text-sm max-w-[150px]">
+                    <p className="text-xs max-w-[140px]">
                       {item.title || item.name}
                     </p>
+
                   </div>
 
-                  <p className="font-medium">
+                  <p className="text-sm font-medium">
                     ₹{item.price * item.quantity}
                   </p>
 
                 </div>
+
               ))
             )}
 
           </div>
 
-          {/* Discount */}
-          <div className="flex gap-2 mt-6">
-            <input
-              placeholder="Discount code"
-              className="border p-3 rounded-md flex-1"
-            />
-            <button className="bg-gray-200 px-4 rounded-md">
-              Apply
-            </button>
-          </div>
-
           {/* SUMMARY */}
-          <div className="mt-6 text-sm space-y-2">
+          <div className="border-t p-5 bg-[#F8EDEB] text-sm">
 
-            <div className="flex justify-between">
-              <p>Subtotal · {cartItems.length} items</p>
+            <div className="flex justify-between mb-1">
+              <p>Subtotal · {cartItems.length}</p>
               <p>₹{subtotal}</p>
             </div>
 
-            <div className="flex justify-between">
+            <div className="flex justify-between mb-1">
               <p>Shipping</p>
-              <p className="text-gray-400">Calculated at next step</p>
+              <p className="text-gray-400">Next step</p>
             </div>
 
-            <div className="flex justify-between font-semibold text-lg mt-4">
+            <div className="flex justify-between font-semibold mt-2">
               <p>Total</p>
               <p>₹{subtotal}</p>
             </div>
@@ -196,6 +217,7 @@ export default function Checkout() {
         </div>
 
       </div>
+
     </div>
   );
 }
