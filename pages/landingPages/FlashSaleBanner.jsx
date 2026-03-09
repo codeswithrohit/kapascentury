@@ -1,14 +1,20 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 export default function FlashSaleBanner() {
-  const targetDate = new Date();
-  targetDate.setDate(targetDate.getDate() + 50);
+
+  const targetDateRef = useRef(null);
+
+  if (!targetDateRef.current) {
+    const target = new Date();
+    target.setDate(target.getDate() + 50);
+    targetDateRef.current = target;
+  }
 
   const calculateTime = () => {
     const now = new Date().getTime();
-    const distance = targetDate.getTime() - now;
+    const distance = targetDateRef.current.getTime() - now;
 
     return {
       days: Math.floor(distance / (1000 * 60 * 60 * 24)),
@@ -31,13 +37,7 @@ export default function FlashSaleBanner() {
   return (
     <section className="px-4 sm:px-6 py-8 sm:py-10">
       <div
-        className="relative rounded-3xl overflow-hidden 
-        flex flex-col lg:flex-row 
-        items-center justify-between 
-        gap-6 lg:gap-0 
-        px-6 sm:px-8 lg:px-10 
-        py-8 lg:py-0 
-        min-h-[220px] lg:h-[180px]"
+        className="relative rounded-3xl overflow-hidden flex flex-col lg:flex-row items-center justify-between gap-6 lg:gap-0 px-6 sm:px-8 lg:px-10 py-8 lg:py-0 min-h-[220px] lg:h-[180px]"
         style={{
           backgroundImage:
             "url(https://demo2-milano.myshopify.com/cdn/shop/files/fs8_sale.jpg?v=1758101571&width=1920)",
@@ -45,21 +45,18 @@ export default function FlashSaleBanner() {
           backgroundPosition: "center",
         }}
       >
-        {/* Overlay */}
+
         <div className="absolute inset-0 bg-black/30"></div>
 
-        {/* LEFT TEXT */}
         <div className="relative text-white text-center lg:text-left max-w-md">
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-serif font-semibold">
             Flash Sale now on!
           </h2>
-
           <p className="text-sm mt-2">
             Score Big Savings on All Your Favorites
           </p>
         </div>
 
-        {/* TIMER */}
         <div className="relative flex gap-3 sm:gap-4 text-center">
           <TimerBox value={time.days} label="DAYS" />
           <TimerBox value={time.hours} label="HOUR" />
@@ -67,7 +64,6 @@ export default function FlashSaleBanner() {
           <TimerBox value={time.secs} label="SECS" />
         </div>
 
-        {/* RIGHT BUTTON */}
         <div className="relative flex flex-col sm:flex-row items-center gap-4 sm:gap-6 text-center">
           <span className="text-white text-sm sm:text-lg font-medium">
             Topsale10STBL
@@ -77,6 +73,7 @@ export default function FlashSaleBanner() {
             Shop Sale
           </button>
         </div>
+
       </div>
     </section>
   );
