@@ -15,18 +15,24 @@ export default function Cart() {
     clearCart,
   } = useCart();
 
-  if (!isCartOpen) return null;
-
   return (
-    <div className="fixed inset-0 z-50 flex">
+    <div
+      className={`fixed inset-0 z-50 flex transition-opacity duration-300 ${
+        isCartOpen ? "opacity-100 visible" : "opacity-0 invisible"
+      }`}
+    >
       {/* Overlay */}
       <div
-        className="absolute inset-0 bg-transparent bg-opacity-10"
+        className="absolute inset-0 bg-black/30"
         onClick={() => setIsCartOpen(false)}
       ></div>
 
       {/* Cart Sidebar */}
-      <div className="relative ml-auto w-full max-w-md bg-white shadow-xl h-full overflow-y-auto">
+      <div
+        className={`relative ml-auto w-full max-w-md bg-white shadow-xl h-full overflow-y-auto transform transition-transform duration-300 ease-in-out ${
+          isCartOpen ? "translate-x-0" : "translate-x-full"
+        }`}
+      >
         <div className="p-6">
           {/* Header */}
           <div className="flex justify-between items-center mb-6">
@@ -54,9 +60,16 @@ export default function Cart() {
                     alt={item.title}
                     className="w-16 h-16 object-cover rounded"
                   />
+
                   <div className="flex-1">
-                    <h3 className="font-medium text-sm">{item.title}</h3>
-                    <p className="text-gray-600 text-sm">₹{item.price}</p>
+                    <h3 className="font-medium text-sm">
+                      {item.title || item.name}
+                    </h3>
+
+                    <p className="text-gray-600 text-sm">
+                      ₹{item.price}
+                    </p>
+
                     <div className="flex items-center mt-2">
                       <button
                         onClick={() =>
@@ -66,7 +79,11 @@ export default function Cart() {
                       >
                         <FiMinus size={12} />
                       </button>
-                      <span className="px-3">{item.quantity}</span>
+
+                      <span className="px-3">
+                        {item.quantity}
+                      </span>
+
                       <button
                         onClick={() =>
                           updateQuantity(item.id, item.quantity + 1)
@@ -77,6 +94,7 @@ export default function Cart() {
                       </button>
                     </div>
                   </div>
+
                   <button
                     onClick={() => removeFromCart(item.id)}
                     className="text-red-500 hover:text-red-700"
@@ -95,12 +113,14 @@ export default function Cart() {
                 <span>Total:</span>
                 <span>₹{getTotalPrice().toFixed(2)}</span>
               </div>
+
               <button
                 onClick={clearCart}
                 className="w-full bg-gray-200 text-gray-800 py-2 rounded mb-2 hover:bg-gray-300"
               >
                 Clear Cart
               </button>
+
               <Link href="/purchasePages/Checkout">
                 <button className="w-full bg-black text-white py-2 rounded hover:bg-gray-800">
                   Checkout
