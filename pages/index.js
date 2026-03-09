@@ -1,17 +1,17 @@
-import Header from "../component/Header"
-import AnnouncementBar from "./landingPages/AnnouncementBar";
-import CategoryCircleSection from "./landingPages/CategoryCircleSection";
-import CuratedSection from "./landingPages/CuratedSection";
-import HeroSection from "./landingPages/HeroSection";
-import BestSellingSection from "./landingPages/BestSellingSection";
-import BrandStorySection from "./landingPages/BrandStorySection";
-import Footer from "../component/Footer";
-import TrendingCollectionSection from "./landingPages/TrendingCollectionSection";
-import FlashSaleBanner from "./landingPages/FlashSaleBanner";
-import FeaturedCollection from "./landingPages/FeaturedCollection";
-import HappyCustomers from "./landingPages/HappyCustomers";
-import BottomHeroBanner from "./landingPages/BottomHeroBanner";
-import BottomFeatureBar from "./landingPages/BottomFeatureBar";
+import Header from "../src/components/reusable/Header"
+import AnnouncementBar from "../src/components/landingPages/AnnouncementBar";
+import CategoryCircleSection from "../src/components/landingPages/CategoryCircleSection";
+import CuratedSection from "../src/components/landingPages/CuratedSection";
+import HeroSection from "../src/components/landingPages/HeroSection";
+import BestSellingSection from "../src/components/landingPages/BestSellingSection";
+import BrandStorySection from "../src/components/landingPages/BrandStorySection";
+import Footer from "../src/components/reusable/Footer";
+import TrendingCollectionSection from "../src/components/landingPages/TrendingCollectionSection";
+import FlashSaleBanner from "../src/components/landingPages/FlashSaleBanner";
+import FeaturedCollection from "../src/components/landingPages/FeaturedCollection";
+import HappyCustomers from "../src/components/landingPages/HappyCustomers";
+import BottomHeroBanner from "../src/components/landingPages/BottomHeroBanner";
+import BottomFeatureBar from "../src/components/landingPages/BottomFeatureBar";
 
 
 // import Cart from "./component/cart";

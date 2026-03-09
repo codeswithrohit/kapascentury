@@ -3,7 +3,7 @@
 import useEmblaCarousel from "embla-carousel-react";
 import { FaHeart, FaEye } from "react-icons/fa";
 import { HiOutlineSquares2X2 } from "react-icons/hi2";
-import { useCart } from "../../context/CartContext";
+import { useCart } from "../../../context/CartContext";
 
 const products = [
   {
@@ -11,21 +11,21 @@ const products = [
     name: "Wine Maroon Embroidered",
     price: 165,
     image:
-      "https://demo2-milano.myshopify.com/cdn/shop/files/fs4_6_2.webp?v=1758095003&width=660",
+      "https://demo2-milano.myshopify.com/cdn/shop/files/fs4_2_2.jpg?v=1757989565&width=660",
   },
   {
     id: 2,
     name: "Silk Blend Anarkali Kurta Set",
     price: 240,
     image:
-      "https://demo2-milano.myshopify.com/cdn/shop/files/fs4_7_2.webp?v=1758097443&width=660",
+      "https://demo2-milano.myshopify.com/cdn/shop/files/fs4_3_2.jpg?v=1757989892&width=720",
   },
   {
     id: 3,
     name: "Blue Embroidered Kurta Set",
     price: 220,
     image:
-      "https://demo2-milano.myshopify.com/cdn/shop/files/fs4_8_2.webp?v=1758097600&width=660",
+      "https://demo2-milano.myshopify.com/cdn/shop/files/fs4_4_2.jpg?v=1757990041&width=720",
   },
   {
     id: 4,
@@ -34,11 +34,11 @@ const products = [
     oldPrice: 400,
     discount: "-13%",
     image:
-      "https://demo2-milano.myshopify.com/cdn/shop/files/fs4_3_2.jpg?v=1757989892&width=660",
+      "https://demo2-milano.myshopify.com/cdn/shop/files/fs4_7_2.webp?v=1758097443&width=660",
   },
 ];
 
-export default function FeaturedCollection() {
+export default function TrendingCollectionSection() {
   const [emblaRef] = useEmblaCarousel({
     align: "start",
     loop: true,
@@ -48,26 +48,37 @@ export default function FeaturedCollection() {
   const { addToCart } = useCart();
 
   return (
-    <section className="py-12 lg:py-16">
-      <div className="max-w-[1380px] mx-auto px-4">
+    <section className="py-12 lg:py-16 px-4">
+      <div className="max-w-[1400px] mx-auto">
 
-        <div className="flex flex-col lg:flex-row gap-6 items-start">
+        <div className="flex flex-col lg:flex-row gap-8">
 
-          {/* PRODUCTS LEFT SIDE */}
-          <div className="flex-1 w-full order-2 lg:order-1">
+          {/* LEFT BANNER */}
+          <div className="hidden lg:block lg:w-[30%]">
+            <img
+              src="https://demo2-milano.myshopify.com/cdn/shop/files/fs8_12.webp?v=1758101571&width=660"
+              alt="Trending Collection"
+              className="rounded-3xl w-full h-[420px] xl:h-[460px] object-cover"
+            />
+          </div>
+
+          {/* RIGHT SIDE */}
+          <div className="lg:w-[70%] w-full">
 
             {/* HEADER */}
             <div className="flex items-center justify-between mb-6">
+
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-serif">
-                Featured Collection
+                Trending Collection
               </h2>
 
-              <button className="underline text-xs sm:text-sm hover:text-gray-500">
+              <button className="text-sm underline hover:text-gray-500">
                 View All
               </button>
+
             </div>
 
-            {/* EMBLA */}
+            {/* EMBLA SLIDER */}
             <div className="overflow-hidden" ref={emblaRef}>
               <div className="flex">
 
@@ -79,19 +90,26 @@ export default function FeaturedCollection() {
                     sm:flex-[0_0_33%]
                     lg:flex-[0_0_25%]
                     px-2
-                    group
                     "
                   >
-                    {/* PRODUCT CARD */}
-                    <div>
 
-                      {/* IMAGE */}
+                    <div className="group">
+
+                      {/* IMAGE CARD */}
                       <div className="relative overflow-hidden rounded-2xl">
 
                         <img
                           src={product.image}
                           alt={product.name}
-                          className="w-full h-[220px] sm:h-[260px] lg:h-[300px] object-cover transition duration-500 group-hover:scale-105"
+                          className="
+                          w-full
+                          h-[220px]
+                          sm:h-[260px]
+                          lg:h-[300px]
+                          object-cover
+                          transition duration-500
+                          group-hover:scale-105
+                          "
                         />
 
                         {/* DISCOUNT */}
@@ -123,7 +141,7 @@ export default function FeaturedCollection() {
 
                           <button
                             onClick={() => addToCart(product, 1)}
-                            className="w-full bg-white py-2 rounded-full text-sm font-medium hover:bg-black hover:text-white"
+                            className="w-full bg-white py-2 rounded-full text-sm font-medium hover:bg-black hover:text-white transition"
                           >
                             Add To Cart
                           </button>
@@ -158,22 +176,12 @@ export default function FeaturedCollection() {
                       </div>
 
                     </div>
+
                   </div>
                 ))}
 
               </div>
             </div>
-
-          </div>
-
-          {/* BANNER RIGHT SIDE */}
-          <div className="w-full lg:block hidden lg:w-[420px] order-1 lg:order-2">
-
-            <img
-              src="https://demo2-milano.myshopify.com/cdn/shop/files/fs8_2.webp?v=1758101571&width=660"
-              alt="Trending Collection"
-              className="rounded-3xl w-full h-[260px] sm:h-[320px] lg:h-[440px] object-cover"
-            />
 
           </div>
 

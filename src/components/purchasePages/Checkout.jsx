@@ -2,7 +2,7 @@
 
 import { FaLock } from "react-icons/fa";
 import { FiSearch } from "react-icons/fi";
-import { useCart } from "../../context/CartContext";
+import { useCart } from "../../../context/CartContext";
 
 export default function Checkout() {
 

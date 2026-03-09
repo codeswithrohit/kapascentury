@@ -1,4 +1,4 @@
-import MainProductsPage from "../MainProductDetailPages/MainProductsPage";
+import MainProductsPage from "../../src/components/MainProductDetailPages/MainProductsPage";
 import { useRouter } from "next/router";
 
 

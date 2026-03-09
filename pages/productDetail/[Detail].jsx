@@ -1,4 +1,4 @@
-import ProductLayout from "../individualProductDetail/ProductLayout";
+import ProductLayout from "../../src/components/individualProductDetail/ProductLayout";
 import { useRouter } from "next/router";
 
 

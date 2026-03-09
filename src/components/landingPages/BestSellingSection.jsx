@@ -3,7 +3,7 @@
 import useEmblaCarousel from "embla-carousel-react"
 import { FaHeart, FaEye } from "react-icons/fa"
 import { HiOutlineSquares2X2 } from "react-icons/hi2"
-import { useCart } from "../../context/CartContext"
+import { useCart } from "../../../context/CartContext"
 
 const products = [
   {
