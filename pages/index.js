@@ -13,6 +13,7 @@ import HappyCustomers from "./landingPages/HappyCustomers";
 import BottomHeroBanner from "./landingPages/BottomHeroBanner";
 import BottomFeatureBar from "./landingPages/BottomFeatureBar";
 
+
 // import Cart from "./component/cart";
 
 
@@ -32,8 +33,6 @@ export default function Home() {
     <HappyCustomers />
     <BottomHeroBanner />
     <BottomFeatureBar />
-    {/* <Cart /> */}
-   
     <Footer />
    </>
   );
