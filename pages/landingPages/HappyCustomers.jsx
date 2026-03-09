@@ -53,11 +53,11 @@ const reviews = [
 
 export default function HappyCustomers() {
   return (
-    <section className="bg-[#F7F2EC] py-12 sm:py-14 lg:py-16">
+    <section className="bg-[#F8EDEB] py-12 sm:py-14 lg:py-16">
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6">
 
         {/* TITLE */}
-        <h2 className="text-center text-2xl sm:text-3xl lg:text-4xl font-serif mb-8 lg:mb-12">
+        <h2 className="text-center text-2xl sm:text-3xl lg:text-4xl font-serif mb-8 lg:mb-12 text-gray-800">
           Happy Customers
         </h2>
 
@@ -67,7 +67,7 @@ export default function HappyCustomers() {
           {reviews.map((review) => (
             <div
               key={review.id}
-              className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition"
+              className="bg-[#FAE1DD] rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition duration-300"
             >
 
               {/* IMAGE */}
@@ -81,7 +81,7 @@ export default function HappyCustomers() {
               <div className="p-4 sm:p-5 lg:p-6">
 
                 {/* STARS */}
-                <div className="flex text-orange-400 text-sm mb-2">
+                <div className="flex text-yellow-500 text-sm mb-2">
                   {[...Array(5)].map((_, i) => (
                     <FaStar key={i} />
                   ))}
@@ -90,11 +90,11 @@ export default function HappyCustomers() {
                 {/* NAME */}
                 <div className="flex items-center flex-wrap gap-2 mb-2">
 
-                  <h4 className="font-semibold text-sm sm:text-base">
+                  <h4 className="font-semibold text-sm sm:text-base text-gray-800">
                     {review.name}
                   </h4>
 
-                  <span className="flex items-center text-gray-500 text-xs gap-1">
+                  <span className="flex items-center text-gray-600 text-xs gap-1">
                     <MdVerified className="text-green-500" />
                     Verified Buyer
                   </span>
@@ -102,11 +102,11 @@ export default function HappyCustomers() {
                 </div>
 
                 {/* TEXT */}
-                <p className="text-gray-600 text-xs sm:text-sm leading-relaxed line-clamp-4">
+                <p className="text-gray-700 text-xs sm:text-sm leading-relaxed line-clamp-4">
                   {review.text}
                 </p>
 
-                <div className="border-t my-4 sm:my-5"></div>
+                <div className="border-t border-[#E8CFC9] my-4 sm:my-5"></div>
 
                 {/* PRODUCT */}
                 <div className="flex items-center gap-3">
@@ -119,16 +119,16 @@ export default function HappyCustomers() {
 
                   <div>
 
-                    <p className="text-xs sm:text-sm font-medium truncate max-w-[140px]">
+                    <p className="text-xs sm:text-sm font-medium truncate max-w-[140px] text-gray-800">
                       {review.product}
                     </p>
 
-                    <div className="text-xs sm:text-sm font-semibold">
+                    <div className="text-xs sm:text-sm font-semibold text-gray-900">
 
                       {review.price}
 
                       {review.oldPrice && (
-                        <span className="text-gray-400 line-through ml-2 text-xs">
+                        <span className="text-gray-500 line-through ml-2 text-xs">
                           {review.oldPrice}
                         </span>
                       )}
