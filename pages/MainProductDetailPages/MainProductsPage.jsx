@@ -5,8 +5,8 @@ import { FiFilter, FiX } from "react-icons/fi";
 import ProductSidebar from "./ProductSidebar";
 import ProductGrid from "./ProductGrid";
 import { useSearchParams } from "next/navigation";
-import Header from "../component/Header"
-import Footer from "../component/Footer";
+import Header from "../../component/Header"
+import Footer from "../../component/Footer";
 
 export default function MainProductsPage({ category }) {
   const [open, setOpen] = useState(false);

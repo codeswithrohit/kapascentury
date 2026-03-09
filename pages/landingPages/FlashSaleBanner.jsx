@@ -4,7 +4,12 @@ import { useEffect, useState, useRef } from "react";
 
 export default function FlashSaleBanner() {
 
+  const [mounted, setMounted] = useState(false);
   const targetDateRef = useRef(null);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   if (!targetDateRef.current) {
     const target = new Date();
@@ -24,15 +29,26 @@ export default function FlashSaleBanner() {
     };
   };
 
-  const [time, setTime] = useState(calculateTime());
+  const [time, setTime] = useState({
+    days: 50,
+    hours: 0,
+    mins: 0,
+    secs: 0,
+  });
 
   useEffect(() => {
+    if (!mounted) return;
+
+    setTime(calculateTime());
+
     const timer = setInterval(() => {
       setTime(calculateTime());
     }, 1000);
 
     return () => clearInterval(timer);
-  }, []);
+  }, [mounted]);
+
+  if (!mounted) return null;
 
   return (
     <section className="px-4 sm:px-6 py-8 sm:py-10">
@@ -45,7 +61,6 @@ export default function FlashSaleBanner() {
           backgroundPosition: "center",
         }}
       >
-
         <div className="absolute inset-0 bg-black/30"></div>
 
         <div className="relative text-white text-center lg:text-left max-w-md">
@@ -73,7 +88,6 @@ export default function FlashSaleBanner() {
             Shop Sale
           </button>
         </div>
-
       </div>
     </section>
   );

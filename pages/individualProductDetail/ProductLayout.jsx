@@ -4,8 +4,8 @@ import CustomerReviews from "./CustomerReviews";
 import ProductInfo from "./ProductInfo";
 import ProductLeftSidebar from "./ProductLeftSidebar";
 import ProductRightSidebar from "./ProductRightSidebar";
-import Header from "../component/Header";
-import Footer from "../component/Footer";
+import Header from "../../component/Header";
+import Footer from "../../component/Footer";
 
 export default function ProductLayout( { Detail }) {
 

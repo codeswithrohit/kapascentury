@@ -11,8 +11,8 @@ import {
   FiX,
 } from "react-icons/fi";
 import { MdKeyboardArrowDown } from "react-icons/md";
-import { useCart } from "../../context/CartContext";
-import Cart from "../purchasePages/Cart";
+import { useCart } from "../context/CartContext";
+import Cart from "../pages/purchasePages/Cart";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
