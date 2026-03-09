@@ -2,6 +2,7 @@
 
 import { useCart } from "../../context/CartContext";
 import { FiX, FiMinus, FiPlus } from "react-icons/fi";
+import Link from "next/link";
 
 export default function Cart() {
   const {
@@ -11,7 +12,7 @@ export default function Cart() {
     removeFromCart,
     updateQuantity,
     getTotalPrice,
-    clearCart
+    clearCart,
   } = useCart();
 
   if (!isCartOpen) return null;
@@ -44,7 +45,10 @@ export default function Cart() {
           ) : (
             <div className="space-y-4">
               {cartItems.map((item) => (
-                <div key={item.id} className="flex items-center space-x-4 border-b pb-4">
+                <div
+                  key={item.id}
+                  className="flex items-center space-x-4 border-b pb-4"
+                >
                   <img
                     src={item.image}
                     alt={item.title}
@@ -55,14 +59,18 @@ export default function Cart() {
                     <p className="text-gray-600 text-sm">₹{item.price}</p>
                     <div className="flex items-center mt-2">
                       <button
-                        onClick={() => updateQuantity(item.id, item.quantity - 1)}
+                        onClick={() =>
+                          updateQuantity(item.id, item.quantity - 1)
+                        }
                         className="p-1 border rounded"
                       >
                         <FiMinus size={12} />
                       </button>
                       <span className="px-3">{item.quantity}</span>
                       <button
-                        onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                        onClick={() =>
+                          updateQuantity(item.id, item.quantity + 1)
+                        }
                         className="p-1 border rounded"
                       >
                         <FiPlus size={12} />
@@ -93,9 +101,11 @@ export default function Cart() {
               >
                 Clear Cart
               </button>
-              <button className="w-full bg-black text-white py-2 rounded hover:bg-gray-800">
-                Checkout
-              </button>
+              <Link href="/purchasePages/Checkout">
+                <button className="w-full bg-black text-white py-2 rounded hover:bg-gray-800">
+                  Checkout
+                </button>
+              </Link>
             </div>
           )}
         </div>
