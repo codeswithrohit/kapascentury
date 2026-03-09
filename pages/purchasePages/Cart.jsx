@@ -1,6 +1,6 @@
 "use client";
 
-import { useCart } from "../../../context/CartContext";
+import { useCart } from "../../context/CartContext";
 import { FiX, FiMinus, FiPlus } from "react-icons/fi";
 import Link from "next/link";
 
