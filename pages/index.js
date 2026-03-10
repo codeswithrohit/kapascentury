@@ -12,6 +12,8 @@ import FeaturedCollection from "../src/components/landingPages/FeaturedCollectio
 import HappyCustomers from "../src/components/landingPages/HappyCustomers";
 import BottomHeroBanner from "../src/components/landingPages/BottomHeroBanner";
 import BottomFeatureBar from "../src/components/landingPages/BottomFeatureBar";
+import BOdyCare from "@/src/components/landingPages/BodyCare";
+import SpotlightSection from "@/src/components/landingPages/SpotlightSection";
 
 
 // import Cart from "./component/cart";
@@ -23,9 +25,11 @@ export default function Home() {
     <Header />
     <HeroSection />
     <CategoryCircleSection />
+    <BOdyCare />
     <AnnouncementBar />
     <CuratedSection />
     <BestSellingSection />
+    <SpotlightSection />
     <BrandStorySection />
     <TrendingCollectionSection />
     <FlashSaleBanner />
