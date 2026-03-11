@@ -71,7 +71,7 @@ export default function BodyCare() {
   ];
 
   return (
-    <div className="min-h-screen bg-white pb-10">
+    <div className=" bg-white pb-10">
 
       {/* HEADER */}
       <div className="bg-gradient-to-r from-pink-50 to-rose-50 py-6 text-center">
