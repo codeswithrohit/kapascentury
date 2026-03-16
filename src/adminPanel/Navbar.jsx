@@ -1,13 +1,29 @@
-import { FiBell, FiMoon, FiSettings } from "react-icons/fi";
+"use client";
 
-export default function Navbar() {
+import { FiBell, FiMoon, FiSettings, FiMenu } from "react-icons/fi";
+
+export default function Navbar({ toggleSidebar }) {
   return (
     <div className="bg-white h-16 shadow flex items-center justify-between px-6">
 
-      <h1 className="font-semibold text-gray-700">
-        WELCOME!
-      </h1>
+      {/* Left */}
+      <div className="flex items-center gap-3">
 
+        {/* Hamburger (Mobile only) */}
+        <button
+          className="lg:hidden text-gray-700"
+          onClick={toggleSidebar}
+        >
+          <FiMenu size={22} />
+        </button>
+
+        <h1 className="font-semibold text-gray-700">
+          WELCOME!
+        </h1>
+
+      </div>
+
+      {/* Right */}
       <div className="flex items-center gap-5">
 
         <FiMoon size={20} />

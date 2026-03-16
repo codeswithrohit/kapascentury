@@ -1,131 +1,163 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import {
   FiGrid,
   FiBox,
-  FiLayers,
-  FiArchive,
   FiShoppingCart,
-  FiTruck,
-  FiTag,
-  FiFileText,
   FiSettings,
-  FiUser,
-  FiUsers,
-  FiMessageSquare,
-  FiMail,
-  FiCalendar,
-  FiCheckSquare,
-  FiHelpCircle,
-  FiFile,
   FiChevronDown,
+  FiChevronUp,
 } from "react-icons/fi";
 
-export default function Sidebar() {
+export default function Sidebar({ sidebarOpen, setSidebarOpen }) {
   return (
-    <aside className="w-64 lg:h-screen bg-[#1f2937] text-gray-300 fixed left-0 top-0 overflow-y-auto">
+    <>
+      {/* Overlay */}
+      <div
+        className={`fixed inset-0 bg-black bg-opacity-40 lg:hidden 
+        ${sidebarOpen ? "block" : "hidden"}`}
+        onClick={() => setSidebarOpen(false)}
+      ></div>
 
-      {/* Logo */}
-      <div className="flex items-center gap-2 px-6 py-5 border-b border-gray-700">
-       
-        <h1 className="text-lg font-semibold text-white">Kapas Centuary</h1>
-      </div>
+      <aside
+        className={`w-64 lg:h-screen bg-[#1f2937] text-gray-300 fixed left-0 top-0 overflow-y-auto z-50 transform transition-transform duration-300
+        ${sidebarOpen ? "translate-x-0" : "-translate-x-full"}
+        lg:translate-x-0`}
+      >
+        {/* Logo */}
+        <div className="flex items-center gap-2 px-6 py-5 border-b border-gray-700">
+          <h1 className="text-lg font-semibold text-white">
+            Kapas Centuary
+          </h1>
+        </div>
 
-      <nav className="px-4 py-4 text-sm">
+        {/* NAV */}
+        <nav className="px-4 py-4 text-sm space-y-2">
+          {/* GENERAL */}
+          <p className="text-xs text-gray-500 px-2 mb-2 mt-2">GENERAL</p>
 
-        {/* GENERAL */}
-        <p className="text-xs text-gray-500 px-2 mb-2 mt-2">GENERAL</p>
+          <SidebarItem
+            icon={<FiGrid />}
+            title="Dashboard"
+            href="/admin/dashboard"
+          />
 
-        <SidebarItem icon={<FiGrid />} title="Dashboard" active />
+          {/* PRODUCTS */}
+          <DropdownItem icon={<FiBox />} title="Products">
+            <SubItem title="List" href="/admin/products-list/List" />
+          </DropdownItem>
 
-        <DropdownItem icon={<FiBox />} title="Products" />
-        <DropdownItem icon={<FiLayers />} title="Category" />
-        <DropdownItem icon={<FiArchive />} title="Inventory" />
-        <DropdownItem icon={<FiShoppingCart />} title="Orders" />
-        <DropdownItem icon={<FiTruck />} title="Purchase" />
-        <DropdownItem icon={<FiTag />} title="Attributes" />
-        <DropdownItem icon={<FiFileText />} title="Invoices" />
+          {/* ORDERS */}
+          <DropdownItem icon={<FiShoppingCart />} title="Orders">
+            <SubItem title="List" href="/admin/order-list/List" />
+          </DropdownItem>
 
-        <SidebarItem icon={<FiSettings />} title="Settings" />
-
-        {/* USERS */}
-        <p className="text-xs text-gray-500 px-2 mt-6 mb-2">USERS</p>
-
-        <SidebarItem icon={<FiUser />} title="Profile" />
-        <DropdownItem icon={<FiUsers />} title="Roles" />
-        <SidebarItem icon={<FiFile />} title="Permissions" />
-        <SidebarItem icon={<FiUsers />} title="Customers" />
-        <SidebarItem icon={<FiUsers />} title="Sellers" />
-
-        {/* OTHER */}
-        <p className="text-xs text-gray-500 px-2 mt-6 mb-2">OTHER</p>
-
-        <DropdownItem icon={<FiTag />} title="Coupons" />
-        <SidebarItem icon={<FiMessageSquare />} title="Reviews" />
-
-        {/* OTHER APPS */}
-        <p className="text-xs text-gray-500 px-2 mt-6 mb-2">OTHER APPS</p>
-
-        <SidebarItem icon={<FiMessageSquare />} title="Chat" />
-        <SidebarItem icon={<FiMail />} title="Email" />
-        <SidebarItem icon={<FiCalendar />} title="Calendar" />
-        <SidebarItem icon={<FiCheckSquare />} title="Todo" />
-
-        {/* SUPPORT */}
-        <p className="text-xs text-gray-500 px-2 mt-6 mb-2">SUPPORT</p>
-
-        <SidebarItem icon={<FiHelpCircle />} title="Help Center" />
-        <SidebarItem icon={<FiHelpCircle />} title="FAQs" />
-        <SidebarItem icon={<FiFile />} title="Privacy Policy" />
-
-        {/* CUSTOM */}
-        <p className="text-xs text-gray-500 px-2 mt-6 mb-2">CUSTOM</p>
-
-        <DropdownItem icon={<FiFile />} title="Pages" />
-        <DropdownItem icon={<FiUser />} title="Authentication" />
-        <SidebarItem icon={<FiGrid />} title="Widgets" />
-
-        {/* COMPONENTS */}
-        <p className="text-xs text-gray-500 px-2 mt-6 mb-2">COMPONENTS</p>
-
-        <DropdownItem icon={<FiGrid />} title="Base UI" />
-        <DropdownItem icon={<FiGrid />} title="Advanced UI" />
-        <DropdownItem icon={<FiGrid />} title="Charts" />
-        <DropdownItem icon={<FiGrid />} title="Forms" />
-        <DropdownItem icon={<FiGrid />} title="Tables" />
-        <DropdownItem icon={<FiGrid />} title="Icons" />
-        <DropdownItem icon={<FiGrid />} title="Maps" />
-
-        <SidebarItem icon={<FiGrid />} title="Badge Menu" />
-        <SidebarItem icon={<FiGrid />} title="Menu Item" />
-        <SidebarItem icon={<FiGrid />} title="Disable Item" />
-
-      </nav>
-    </aside>
+          {/* SETTINGS */}
+          <SidebarItem
+            icon={<FiSettings />}
+            title="Settings"
+            href="/admin/settings"
+          />
+        </nav>
+      </aside>
+    </>
   );
 }
 
-function SidebarItem({ icon, title, active }) {
-  return (
-    <div
-      className={`flex items-center gap-3 px-3 py-2 rounded-lg cursor-pointer
-      ${active ? "bg-gray-700 text-white" : "hover:bg-gray-700 hover:text-white"}`}
-    >
-      <span className="text-lg">{icon}</span>
-      <span>{title}</span>
-    </div>
-  );
-}
+/* 🔹 Sidebar Item */
+function SidebarItem({ icon, title, href }) {
+  const pathname = usePathname();
 
-function DropdownItem({ icon, title }) {
+  const isActive =
+    pathname === href || pathname.startsWith(href + "/");
+
   return (
-    <div className="flex items-center justify-between px-3 py-2 rounded-lg cursor-pointer hover:bg-gray-700 hover:text-white">
-      <div className="flex items-center gap-3">
+    <Link href={href || "#"}>
+      <div
+        className={`flex items-center gap-3 px-3 py-2 rounded-lg cursor-pointer transition-all
+        ${
+          isActive
+            ? "bg-gray-700 text-white"
+            : "hover:bg-gray-700 hover:text-white"
+        }`}
+      >
         <span className="text-lg">{icon}</span>
         <span>{title}</span>
       </div>
-      <FiChevronDown size={14} />
+    </Link>
+  );
+}
+
+/* 🔹 Dropdown Item */
+function DropdownItem({ icon, title, children }) {
+  const pathname = usePathname();
+  const [open, setOpen] = useState(false);
+
+  // 🔥 check if any child is active
+  const isChildActive = Array.isArray(children)
+    ? children.some((child) =>
+        pathname.startsWith(child.props.href)
+      )
+    : pathname.startsWith(children.props.href);
+
+  // 🔥 auto open if active route
+  useEffect(() => {
+    if (isChildActive) {
+      setOpen(true);
+    }
+  }, [pathname, isChildActive]);
+
+  return (
+    <div className="mb-2 relative">
+      {/* Parent */}
+      <div
+        onClick={() => setOpen(!open)}
+        className={`flex items-center justify-between px-3 py-2 rounded-lg cursor-pointer transition-all
+        ${
+          isChildActive
+            ? "bg-gray-700 text-white"
+            : "hover:bg-gray-700 hover:text-white"
+        }`}
+      >
+        <div className="flex items-center gap-3">
+          <span className="text-lg">{icon}</span>
+          <span>{title}</span>
+        </div>
+        {open ? <FiChevronUp size={14} /> : <FiChevronDown size={14} />}
+      </div>
+
+      {/* Children */}
+      {open && (
+        <div className="ml-8 mt-2 space-y-1 text-sm text-gray-400">
+          {children}
+        </div>
+      )}
     </div>
+  );
+}
+
+/* 🔹 Sub Item */
+function SubItem({ title, href }) {
+  const pathname = usePathname();
+
+  const isActive =
+    pathname === href || pathname.startsWith(href + "/");
+
+  return (
+    <Link href={href}>
+      <div
+        className={`px-2 py-1 rounded-md cursor-pointer transition-all
+        ${
+          isActive
+            ? "bg-gray-700 text-white"
+            : "hover:bg-gray-700 hover:text-white"
+        }`}
+      >
+        {title}
+      </div>
+    </Link>
   );
 }
