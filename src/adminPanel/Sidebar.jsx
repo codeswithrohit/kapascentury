@@ -17,13 +17,13 @@ export default function Sidebar({ sidebarOpen, setSidebarOpen }) {
     <>
       {/* Overlay */}
       <div
-        className={`fixed inset-0 bg-black bg-opacity-40 lg:hidden 
+        className={`fixed inset-0 bg-transparent bg-opacity-40 lg:hidden 
         ${sidebarOpen ? "block" : "hidden"}`}
         onClick={() => setSidebarOpen(false)}
       ></div>
 
       <aside
-        className={`w-64 lg:h-screen bg-[#1f2937] text-gray-300 fixed left-0 top-0 overflow-y-auto z-50 transform transition-transform duration-300
+        className={`w-64 h-screen bg-[#1f2937] text-gray-300 fixed left-0 top-0 overflow-y-auto z-50 transform transition-transform duration-300
         ${sidebarOpen ? "translate-x-0" : "-translate-x-full"}
         lg:translate-x-0`}
       >
