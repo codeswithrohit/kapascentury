@@ -21,7 +21,7 @@ import SpotlightSection from "@/src/components/landingPages/SpotlightSection";
 
 export default function Home() {
   return (
-    <>
+    <div className="bg-white">
     <Header />
     <HeroSection />
     <CategoryCircleSection />
@@ -38,6 +38,6 @@ export default function Home() {
     <BottomHeroBanner />
     <BottomFeatureBar />
     <Footer />
-   </>
+   </div>
   );
 }

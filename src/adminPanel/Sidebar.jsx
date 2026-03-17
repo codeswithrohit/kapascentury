@@ -48,11 +48,18 @@ export default function Sidebar({ sidebarOpen, setSidebarOpen }) {
           {/* PRODUCTS */}
           <DropdownItem icon={<FiBox />} title="Products">
             <SubItem title="List" href="/admin/products-list/List" />
+            <SubItem title="Grid" href="/admin/products-list/Grid" />
+            <SubItem title="Details" href="/admin/products-list/Detail"/>
+            <SubItem title="Edit" href="/admin/products-list/Edit" />
+            <SubItem title="Create" href="/admin/products-list/Edit" />
           </DropdownItem>
 
           {/* ORDERS */}
           <DropdownItem icon={<FiShoppingCart />} title="Orders">
             <SubItem title="List" href="/admin/order-list/List" />
+            <SubItem title="Details" href="/admin/order-list/Detail" />
+            <SubItem title="Cart" href="/admin/order-list/Cart" />
+            <SubItem title="Checkout" href="/admin/order-list/Checkout" />
           </DropdownItem>
 
           {/* SETTINGS */}
@@ -77,7 +84,7 @@ function SidebarItem({ icon, title, href }) {
   return (
     <Link href={href || "#"}>
       <div
-        className={`flex items-center gap-3 px-3 py-2 rounded-lg cursor-pointer transition-all
+        className={`flex items-center gap-3 px-3 py-2 mb-2 rounded-lg cursor-pointer transition-all
         ${
           isActive
             ? "bg-gray-700 text-white"
@@ -149,7 +156,7 @@ function SubItem({ title, href }) {
   return (
     <Link href={href}>
       <div
-        className={`px-2 py-1 rounded-md cursor-pointer transition-all
+        className={`px-2 py-1 mb-1 rounded-md cursor-pointer transition-all
         ${
           isActive
             ? "bg-gray-700 text-white"
